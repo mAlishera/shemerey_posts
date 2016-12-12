@@ -7,8 +7,8 @@ exports.config = {
         before: [
           "vendor/bootstrap/js/bootstrap.js",
           "vendor/bootstrap/js/bootstrap.min.js",
-          "vendor/jquery/jquery.js",
-          "vendor/jquery/jquery.min.js",
+          "web/static/assets/jquery/jquery.js",
+          "web/static/assets/jquery/jquery.min.js",
           "js/jqBootstrapValidation.js",
           "js/clean-blog.js",
           "js/clean-blog.min.js",

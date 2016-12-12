@@ -9,6 +9,8 @@
     <meta name="author" content="">
 
     <title>Shemerey Posts</title>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 </head>
 
@@ -23,20 +25,20 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html">Practicing and writing</a>
+                <a class="navbar-brand" href="<%= page_path(@conn, :index) %>">Practicing and writing</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="<%= page_path(@conn, :index) %>">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="<%= page_path(@conn, :about) %>">About</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="<%= page_path(@conn, :contact) %>">Contact</a>
                     </li>
                 </ul>
             </div>
