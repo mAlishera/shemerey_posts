@@ -14,6 +14,9 @@ defmodule ShemereyPosts.ConnCase do
   """
 
   use ExUnit.CaseTemplate
+  alias ShemereyPosts.{Repo, Endpoint}
+  alias Ecto.Adapters.SQL.Sandbox
+  alias Phoenix.ConnTest
 
   using do
     quote do
@@ -23,7 +26,7 @@ defmodule ShemereyPosts.ConnCase do
       alias ShemereyPosts.Repo
       import Ecto
       import Ecto.Changeset
-      import Ecto.Query, only: [from: 1, from: 2]
+      import Ecto.Query
 
       import ShemereyPosts.Router.Helpers
 
@@ -33,10 +36,12 @@ defmodule ShemereyPosts.ConnCase do
   end
 
   setup tags do
+    :ok = Sandbox.checkout(Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(ShemereyPosts.Repo, [])
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.conn()}
+    {:ok, conn: ConnTest.build_conn()}
   end
 end

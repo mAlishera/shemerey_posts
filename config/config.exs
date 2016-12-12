@@ -5,6 +5,9 @@
 # is restricted to this project.
 use Mix.Config
 
+config :shemerey_posts,
+  ecto_repos: [ShemereyPosts.Repo]
+
 # Configures the endpoint
 config :shemerey_posts, ShemereyPosts.Endpoint,
   url: [host: "localhost"],
