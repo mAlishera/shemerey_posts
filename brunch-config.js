@@ -5,14 +5,14 @@ exports.config = {
       joinTo: "js/app.js",
       order: {
         before: [
-          "web/static/js/bootstrap.js",
-          "web/static/js/bootstrap.min.js",
-          "web/static/js/jquery.js",
-          "web/static/js/jquery.min.js",
-          "web/static/js/jqBootstrapValidation.js",
-          "web/static/js/clean-blog.js",
-          "web/static/js/clean-blog.min.js",
-          "web/static/js/contact_me.js"
+          "vendor/bootstrap/js/bootstrap.js",
+          "vendor/bootstrap/js/bootstrap.min.js",
+          "vendor/jquery/jquery.js",
+          "vendor/jquery/jquery.min.js",
+          "js/jqBootstrapValidation.js",
+          "js/clean-blog.js",
+          "js/clean-blog.min.js",
+          "js/contact_me.js"
         ],
         after: [
           "web/static/js/app.js" // concat app.css last
@@ -39,12 +39,12 @@ exports.config = {
       joinTo: "css/app.css",
       order: {
         before: [
-          "web/static/css/bootstrap.css",
-          "web/static/css/bootstrap.min.css",
-          "web/static/css/clean-blog.css",
-          "web/static/css/clean-blog.min.css",
-          "web/static/css/font-awesome.css",
-          "web/static/css/font-awesome.min.css"
+          "vendor/bootstrap/css/bootstrap.css",
+          "vendor/bootstrap/css/bootstrap.min.css",
+          "css/clean-blog.css",
+          "css/clean-blog.min.css",
+          "vendor/font-awesome/css/font-awesome.css",
+          "vendor/font-awesome/css/font-awesome.min.css"
         ],
         after: [
           "web/static/css/app.css" // concat app.css last
@@ -60,7 +60,10 @@ exports.config = {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/web/static/assets". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: /^(web\/static\/assets)/
+    assets: [
+      /^(node_modules\/font-awesome)/,
+      /^(web\/static\/assets)/
+    ]
   },
 
   // Phoenix paths configuration
@@ -68,6 +71,11 @@ exports.config = {
     // Dependencies and current project directories to watch
     watched: [
       "web/static",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.eot",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.svg",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.ttf",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.woff",
+      "node_modules/font-awesome/fonts/fontawesome-webfont.woff2",
       "test/static"
     ],
 
@@ -77,22 +85,32 @@ exports.config = {
 
   // Configure your plugins
   plugins: {
-    babel: {
-      // Do not use ES6 compiler in vendor code
-      ignore: [/web\/static\/vendor/]
+    sass: {
+      options: {
+        includePaths: ["node_modules/bootstrap-sass/assets/stylesheets"], // tell sass-brunch where to look for files to @import
+        precision: 8 // minimum precision required by bootstrap-sass
+      }
+    },
+    copycat: {
+      "fonts": ["node_modules/bootstrap-sass/assets/fonts/bootstrap"] // copy node_modules/bootstrap-sass/assets/fonts/bootstrap/* to priv/static/fonts/
     }
   },
 
   modules: {
     autoRequire: {
-      "js/app.js": ["web/static/js/app"]
+      "js/app.js": [
+        "bootstrap-sass", // require bootstrap-sass' JavaScript globally
+        "web/static/js/app"
+      ]
     }
   },
 
   npm: {
     enabled: true,
-    // Whitelist the npm deps to be pulled in as front-end assets.
-    // All other deps in package.json will be excluded from the bundle.
-    whitelist: ["phoenix", "phoenix_html"]
+    whitelist: ["phoenix", "phoenix_html", "jquery", "bootstrap-sass"], // pull jquery and bootstrap-sass in as front-end assets
+    globals: { // bootstrap-sass' JavaScript requires both '$' and 'jQuery' in global scope
+      $: 'jquery',
+      jQuery: 'jquery'
+    }
   }
 };

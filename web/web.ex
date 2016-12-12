@@ -52,6 +52,7 @@ defmodule ShemereyPosts.Web do
       import ShemereyPosts.Router.Helpers
       import ShemereyPosts.ErrorHelpers
       import ShemereyPosts.Gettext
+      import FontAwesomePhoenix.HTML
     end
   end
 

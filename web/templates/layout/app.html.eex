@@ -10,9 +10,6 @@
 
     <title>Shemerey Posts</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -47,10 +44,6 @@
         </div>
         <!-- /.container -->
     </nav>
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
         <%= render @view_module, @view_template, assigns %>
 
     <!-- Footer -->
@@ -90,18 +83,7 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <!-- <script src="web/static/vendor/jquery/jquery.min.js"></script> -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <!-- <script src="web/static/vendor/bootstrap/js/bootstrap.min.js"></script> -->
-
-    <!-- Contact Form JavaScript -->
-    <!-- <script src="web/static/js/jqBootstrapValidation.js"></script> -->
-    <!-- <script src="web/static/js/contact_me.js"></script> -->
-
-    <!-- Theme JavaScript -->
-    <!-- <script src="web/static/js/clean-blog.min.js"></script> -->
 
 </body>
 
