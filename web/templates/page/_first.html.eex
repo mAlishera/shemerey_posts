@@ -1,0 +1,49 @@
+<h2 class="section-heading">Composite primary keys in Rails and Phoenix apps</h2>
+
+<p>
+  Our application consists of multiple microservises written in Elixir/Phoenix with admin interface in Ruby/Rails.
+</br>
+  Databases for Elixir microservises are also available from Rails and we have some cases when we need to
+  save records in them from Rails as well.
+</p>
+
+<p>
+  Usually it runs smoothly but not this time. Table of :grout_chat_versions belongs to :group_chat and has a
+  composite primary key [:group_chat_id, :version].
+</p>
+<blockquote>
+  With Ecto it may be implimented this way:
+</blockquote>
+
+<script src="https://gist.github.com/mAlishera/42c755a2ec02efb80d936cf2e42cd3be.js"></script>
+
+<p>
+  But ActiveRecord behaives differently.
+  It's wierd, but AR doesn't support composite primaty keys. The solution may be found in "composite_primary_keys" gem.
+  With this additional step you work it.
+</p>
+
+<blockquote>
+  AR implimentation below:
+</blockquote>
+
+<script src="https://gist.github.com/mAlishera/89f98f30bc906595e9d3ce3a68bf040e.js"></script>
+
+<p>
+  And one more tip - as soon as Ecto's timestamps will be in conflict with AR :created_at field, you would need to define
+  Ecto's :inserted_at explicitly in Rails migrations and rewrite timestamp_attributes_for_create method with correct field
+  name in models.
+</p>
+<blockquote>
+  Here is an example:
+</blockquote>
+
+<script src="https://gist.github.com/mAlishera/a7f9c3fefe5249406ac498553da4b3fd.js"></script>
+
+<p>
+  Hope it helps!
+</p>
+
+<span class="caption text-muted">
+  To go places and do things that have never been done before – that’s what living is all about.
+</span>

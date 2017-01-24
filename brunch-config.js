@@ -5,11 +5,8 @@ exports.config = {
       joinTo: "js/app.js",
       order: {
         before: [
-          "vendor/bootstrap/js/bootstrap.js",
-          "vendor/bootstrap/js/bootstrap.min.js",
-          "web/static/assets/jquery/jquery.js",
-          "web/static/assets/jquery/jquery.min.js",
-          "js/jqBootstrapValidation.js",
+          "web/static/vendor/jquery.js",
+          "web/static/vendor/jquery.min.js",
           "js/clean-blog.js",
           "js/clean-blog.min.js",
           "js/contact_me.js"
@@ -99,6 +96,7 @@ exports.config = {
   modules: {
     autoRequire: {
       "js/app.js": [
+        "web/static/vendor",
         "bootstrap-sass", // require bootstrap-sass' JavaScript globally
         "web/static/js/app"
       ]
