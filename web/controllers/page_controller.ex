@@ -5,7 +5,7 @@ defmodule ShemereyPosts.PageController do
     render conn, "index.html"
   end
 
-  def show(conn, _params) do
+  def show(conn,  _params) do
     render conn, "show.html"
   end
 

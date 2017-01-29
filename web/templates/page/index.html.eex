@@ -15,18 +15,34 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-preview">
-                <a href="<%= page_path(@conn, :show) %>">
-                    <h2 class="post-title">
-                        Composite primary keys in Rails and Phoenix apps.
-                    </h2>
-                    <h3 class="post-subtitle">
-                        Ecto and ActiveRecord behaive differently.
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Ekaterina Shemerey</a> on December 12, 2016</p>
-            </div>
-            <hr>
+            <%= if assigns[:conn].params["ruby"] || assigns[:conn].params["elixir"] do %>
+                <div class="post-preview">
+                    <a href="<%= page_path(@conn, :show, page: "composite_primaty_keys_in_rails_and_phoenix_apps") %>">
+                        <h2 class="post-title">
+                            Composite primary keys in Rails and Phoenix apps.
+                        </h2>
+                        <h3 class="post-subtitle">
+                            Ecto and ActiveRecord behaive differently.
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Ekaterina Shemerey</a> on December 12, 2016</p>
+                </div>
+                <hr>
+            <% end %>
+            <%= if assigns[:conn].params["elixir"] do %>
+                <div class="post-preview">
+                    <a href="<%= page_path(@conn, :show, page: "applying_bootstrap_theme_to_phoenix_app") %>">
+                        <h2 class="post-title">
+                            Applying Bootstrap theme to Phoenix app.
+                        </h2>
+                        <h3 class="post-subtitle">
+                            Not using brunch or gulp way.
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Ekaterina Shemerey</a> on December 12, 2016</p>
+                </div>
+                <hr>
+            <% end %>
             <!-- Pager -->
             <%= if false do %>
               <ul class="pager">

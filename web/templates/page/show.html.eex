@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                  <%= render ShemereyPosts.PageView, "_first.html", conn: @conn %>
+                  <%= render ShemereyPosts.PageView, "#{assigns[:conn].params["page"]}.html", conn: @conn %>
                 </div>
             </div>
         </div>
