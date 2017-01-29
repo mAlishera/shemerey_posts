@@ -1,20 +1,10 @@
+var bourbonPath = require("bourbon").includePaths[0];
+
 exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "js/app.js",
-      order: {
-        before: [
-          "web/static/vendor/jquery.js",
-          "web/static/vendor/jquery.min.js",
-          "js/clean-blog.js",
-          "js/clean-blog.min.js",
-          "js/contact_me.js"
-        ],
-        after: [
-          "web/static/js/app.js" // concat app.css last
-        ]
-      }
+      joinTo: "js/app.js"
 
       // To use a separate vendor.js bundle, specify two files path
       // https://github.com/brunch/brunch/blob/stable/docs/config.md#files
@@ -33,20 +23,7 @@ exports.config = {
       // }
     },
     stylesheets: {
-      joinTo: "css/app.css",
-      order: {
-        before: [
-          "vendor/bootstrap/css/bootstrap.css",
-          "vendor/bootstrap/css/bootstrap.min.css",
-          "css/clean-blog.css",
-          "css/clean-blog.min.css",
-          "vendor/font-awesome/css/font-awesome.css",
-          "vendor/font-awesome/css/font-awesome.min.css"
-        ],
-        after: [
-          "web/static/css/app.css" // concat app.css last
-        ]
-      }
+      joinTo: "css/app.css"
     },
     templates: {
       joinTo: "js/app.js"
@@ -57,10 +34,7 @@ exports.config = {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/web/static/assets". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: [
-      /^(node_modules\/font-awesome)/,
-      /^(web\/static\/assets)/
-    ]
+    assets: /^(web\/static\/assets)/
   },
 
   // Phoenix paths configuration
@@ -68,11 +42,6 @@ exports.config = {
     // Dependencies and current project directories to watch
     watched: [
       "web/static",
-      "node_modules/font-awesome/fonts/fontawesome-webfont.eot",
-      "node_modules/font-awesome/fonts/fontawesome-webfont.svg",
-      "node_modules/font-awesome/fonts/fontawesome-webfont.ttf",
-      "node_modules/font-awesome/fonts/fontawesome-webfont.woff",
-      "node_modules/font-awesome/fonts/fontawesome-webfont.woff2",
       "test/static"
     ],
 
@@ -82,33 +51,40 @@ exports.config = {
 
   // Configure your plugins
   plugins: {
+    babel: {
+      // Do not use ES6 compiler in vendor code
+      ignore: [/web\/static\/vendor/]
+    },
+    postcss: {
+      processors: [
+        require("autoprefixer")
+      ],
+    },
     sass: {
       options: {
-        includePaths: ["node_modules/bootstrap-sass/assets/stylesheets"], // tell sass-brunch where to look for files to @import
-        precision: 8 // minimum precision required by bootstrap-sass
+        includePaths: [
+          bourbonPath,
+          "node_modules/normalize.css"
+        ]
       }
-    },
-    copycat: {
-      "fonts": ["node_modules/bootstrap-sass/assets/fonts/bootstrap"] // copy node_modules/bootstrap-sass/assets/fonts/bootstrap/* to priv/static/fonts/
     }
   },
 
   modules: {
     autoRequire: {
-      "js/app.js": [
-        "web/static/vendor",
-        "bootstrap-sass", // require bootstrap-sass' JavaScript globally
-        "web/static/js/app"
-      ]
+      "js/app.js": ["web/static/js/app"]
     }
   },
 
   npm: {
     enabled: true,
-    whitelist: ["phoenix", "phoenix_html", "jquery", "bootstrap-sass"], // pull jquery and bootstrap-sass in as front-end assets
-    globals: { // bootstrap-sass' JavaScript requires both '$' and 'jQuery' in global scope
-      $: 'jquery',
-      jQuery: 'jquery'
-    }
+    // Whitelist the npm deps to be pulled in as front-end assets.
+    // All other deps in package.json will be excluded from the bundle.
+    whitelist: [
+      "bourbon",
+      "normalize.css",
+      "phoenix_html",
+      "phoenix",
+    ]
   }
 };
