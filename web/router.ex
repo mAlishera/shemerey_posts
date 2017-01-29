@@ -23,7 +23,8 @@ defmodule ShemereyPosts.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ShemereyPosts do
-  #   pipe_through :api
-  # end
+  scope "/api", ShemereyPosts do
+    pipe_through :api
+    post "/send", PageController, :send
+  end
 end
