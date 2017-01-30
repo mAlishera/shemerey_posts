@@ -17,9 +17,10 @@ defmodule ShemereyPosts.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/index", PageController, :index
-    get "/show", PageController, :show
     get "/about", PageController, :about
     get "/contact", PageController, :contact
+
+    get "/posts/:post", PageController, :show, as: :special_page
   end
 
   # Other scopes may use custom stacks.

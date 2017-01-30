@@ -2,6 +2,7 @@ defmodule ShemereyPosts.PageController do
   use ShemereyPosts.Web, :controller
 
   def index(conn, _params) do
+    # @posts = ShemereyPosts.Repo.all(ShemereyPosts.Post)
     render conn, "index.html"
   end
 
