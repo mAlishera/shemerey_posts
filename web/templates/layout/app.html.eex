@@ -32,15 +32,15 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="<%= page_path(@conn, :index) %>">Elixir</a>
-                <a class="navbar-brand" href="<%= page_path(@conn, :index) %>">Ruby</a>
+                <a class="navbar-brand" href="<%= index_page_path(@conn, :index, "elixir") %>">Elixir</a>
+                <a class="navbar-brand" href="<%= index_page_path(@conn, :index, "ruby") %>">Ruby</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="<%= page_path(@conn, :index) %>">Home</a>
+                        <a href="<%= index_page_path(@conn, :index, "all") %>">Home</a>
                     </li>
                     <li>
                         <a href="<%= page_path(@conn, :about) %>">About</a>

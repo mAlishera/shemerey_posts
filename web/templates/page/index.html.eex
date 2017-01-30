@@ -15,38 +15,27 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <%= for post <- @posts do %>
                 <div class="post-preview">
-                    <a href="<%= special_page_path(@conn, :show, "composite_primaty_keys_in_rails_and_phoenix_apps") %>">
+                    <a href="<%= special_page_path(@conn, :show, post.path) %>">
                         <h2 class="post-title">
-                            Composite primary keys in Rails and Phoenix apps.
+                            <%= post.title %>
                         </h2>
                         <h3 class="post-subtitle">
-                            Ecto and ActiveRecord behaive differently.
+                            <%= post.subtitle %>
                         </h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">Ekaterina Shemerey</a> on December 12, 2016</p>
+                    <p class="post-meta">Posted by <a href="<%= page_path(@conn, :about) %>"><%= post.author %></a> on <%= post.inserted_at |> Calendar.Strftime.strftime!("%A, %e %B %Y") %></p>
                 </div>
                 <hr>
-                <div class="post-preview">
-                    <a href="<%= special_page_path(@conn, :show, "applying_bootstrap_theme_to_phoenix_app") %>">
-                        <h2 class="post-title">
-                            Applying Bootstrap theme to Phoenix app.
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Not using brunch or gulp way.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Ekaterina Shemerey</a> on December 12, 2016</p>
-                </div>
-                <hr>
-            <!-- Pager -->
-            <%= if false do %>
-              <ul class="pager">
-                  <li class="next">
-                      <a href="#">Older Posts &rarr;</a>
-                  </li>
-              </ul>
             <% end %>
+
+            <!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="<%= index_page_path(@conn, :index, "all") %>">All Tags</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

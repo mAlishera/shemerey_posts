@@ -34,6 +34,7 @@ defmodule ShemereyPosts.Mixfile do
      {:phoenix_ecto, "~> 3.0"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
+     {:calecto, "~> 0.16.0"},
      {:font_awesome_phoenix, "~> 0.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},

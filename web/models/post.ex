@@ -3,9 +3,10 @@ defmodule ShemereyPosts.Post do
 
   schema "posts" do
     field :title, :string
-    field :author, :string
-    field :ruby, :boolean
-    field :elixir, :boolean
+    field :subtitle, :string
+    field :path, :string
+    field :author, :string, default: "Ekaterina Shemerey"
+    field :tags, {:array, :string}, default: []
 
     timestamps()
   end
@@ -15,8 +16,8 @@ defmodule ShemereyPosts.Post do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :author])
-    |> validate_required([:title, :author])
+    |> cast(params, [:title, :subtitle, :path, :author])
+    |> validate_required([:title, :subtitle, :path, :author])
   end
 
 end

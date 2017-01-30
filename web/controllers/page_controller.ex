@@ -1,9 +1,16 @@
 defmodule ShemereyPosts.PageController do
   use ShemereyPosts.Web, :controller
+  alias ShemereyPosts.{Repo, Post}
 
-  def index(conn, _params) do
-    # @posts = ShemereyPosts.Repo.all(ShemereyPosts.Post)
-    render conn, "index.html"
+  def index(conn, %{"tag" => "all"} = params) do
+    posts = Repo.all(Post)
+    render conn, "index.html", posts: posts
+  end
+  def index(conn, %{"tag" => tag} = params) do
+    query = from p in Post, where: ^tag in p.tags
+
+    posts = Repo.all(query)
+    render conn, "index.html", posts: posts
   end
 
   def show(conn,  _params) do

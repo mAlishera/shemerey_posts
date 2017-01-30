@@ -19,7 +19,8 @@ defmodule ShemereyPosts.Router do
     get "/index", PageController, :index
     get "/about", PageController, :about
     get "/contact", PageController, :contact
-
+ 
+    get "/:tag", PageController, :index, as: :index_page
     get "/posts/:post", PageController, :show, as: :special_page
   end
 

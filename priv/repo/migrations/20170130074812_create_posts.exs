@@ -4,9 +4,10 @@ defmodule ShemereyPosts.Repo.Migrations.CreatePosts do
   def change do
     create table(:posts) do
       add :title, :string
-      add :ruby, :boolean
-      add :elixir, :boolean
-      add :author, :string
+      add :subtitle, :string
+      add :path, :string
+      add :tags, {:array, :string}, default: []
+      add :author, :string, default: "Ekaterina Shemerey"
 
       timestamps()
     end
