@@ -12,7 +12,7 @@ config :shemerey_posts,
 config :shemerey_posts, ShemereyPosts.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
-  secret_key_base: "/1A69CWjtgoveHxdW077sr5/wJXQTk+wckVkhL9b4MO7JOe9sn4cJFvFBiAH3iW6",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [accepts: ~w(html json)],
   pubsub: [name: ShemereyPosts.PubSub,
            adapter: Phoenix.PubSub.PG2]
