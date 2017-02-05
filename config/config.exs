@@ -10,7 +10,6 @@ config :shemerey_posts,
 
 # Configures the endpoint
 config :shemerey_posts, ShemereyPosts.Endpoint,
-  url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [accepts: ~w(html json)],
