@@ -17,25 +17,23 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <p>
-                  My name is Ekaterina Shemerey, I am originally from Minsk, Belarus, but moved to Moscow when applied to Lomonosov
-                  Moscow State University. I graduated from it with a degree in Psychology and had a pretty successful career in ad sales
-                  in famous Russian publishing houses (yes, Russia is a country where your degree and your career rarely fit each other)
+                  My name is Ekaterina Shemerey, I am originally from Minsk, Belarus, but moved to Moscow when applied to Lomonosov Moscow State University. I graduated from it with a degree in Psychology and had a pretty successful career in ad sales in famous Russian publishing houses (yes, Russia is a country where your degree and your career rarely fit each other)
                   <i class="em em-blush"></i>
                 </p>
                 <p>
                   Anyway, I dreamed about an occupation which would inspire me and give me money for living at the same time.
-                  Mathematics was my love since high school but stayed a hobby till my brother (Ruby developer) advised
+                  Mathematics has been my love since high school but stayed a hobby till my brother (Ruby developer) advised
                   me to try coding.
                   Guess what programming language I tried first.
                   <i class="em em-raising_hand"></i>
                 </p>
                 <p>
-                  I'm still at the begining of a long advanture of learning (I hope). But already with an expirience of
-                  commertial programming - almost a year as a Ruby developer at Scalex, branch of Toyota Motor Rus, and almost
-                  a year as Elixir developer at Quatro Pro.
-                  I also applied to Bauman Moscow State Technical University and going to earn a degree in Software Programming
+                  I'm still at the beginning of a long learning adventure (I hope). But already have a day job
+                  as a programmer - I am an Elixir developer at Quatro Pro now and on my previous job (Scalex, branch of Toyota Motor Rus) I worked as a Ruby developer. 
+                  I also enrolled in Bauman Moscow State Technical University and going to get a degree in Software Programming 
                   Engineering in 2019.
                 </p>
+                <p>Thanks for stopping by.</p>
             </div>
         </div>
     </div>

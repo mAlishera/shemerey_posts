@@ -30,3 +30,17 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+config :ex_twilio,
+  account_sid:   {:system, "TWILIO_ACCOUNT_SID"},
+  auth_token:    {:system, "TWILIO_AUTH_TOKEN"}
+
+config :shemerey_posts, ShemereyPosts.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: System.get_env("SMTP_SERVER"),
+  port: 465,
+  username: System.get_env("SMTP_USERNAME"),
+  password: System.get_env("SMTP_PASSWORD"),
+  tls: :if_available, # can be `:always` or `:never`
+  ssl: true, # can be `false`
+  retries: 2

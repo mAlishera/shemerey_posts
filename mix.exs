@@ -19,7 +19,7 @@ defmodule ShemereyPosts.Mixfile do
   def application do
     [mod: {ShemereyPosts, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :ex_twilio, :bamboo, :bamboo_smtp]]
   end
 
   # Specifies which paths to compile per environment.
@@ -35,6 +35,8 @@ defmodule ShemereyPosts.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6"},
      {:calecto, "~> 0.16.0"},
+     {:ex_twilio, "~> 0.3.0"},
+     {:bamboo_smtp, "~> 1.2.1"},
      {:font_awesome_phoenix, "~> 0.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},

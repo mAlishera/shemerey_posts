@@ -1,6 +1,6 @@
 defmodule ShemereyPosts.PageController do
   use ShemereyPosts.Web, :controller
-  alias ShemereyPosts.{Repo, Post}
+  alias ShemereyPosts.{Repo, Post, CreateEmailService, Mailer}
 
   def index(conn, %{"tag" => "all"} = params) do
     posts = Repo.all(Post)
@@ -36,6 +36,9 @@ defmodule ShemereyPosts.PageController do
   end
 
   defp send_email(email, phone, name, message) do
-    22
+    "rooh@mail.ru"
+    |> CreateEmailService.new_email("eshemerey@gmail.com", "From #{name}", "From #{email}, #{phone} new message - #{message}")
+    |> Mailer.deliver_now
+    :ok
   end
 end
