@@ -1,0 +1,66 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ru\n"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:27
+msgid "%{ar} implimentation below:"
+msgstr "В %{ar} это можно сделать таким образом:"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:33
+msgid "And one more tip - as soon as %{ecto}'s timestamps are in conflict with %{ar} %{ca} field, you'll need to define\n  %{ecto}'s %{ia} explicitly in %{rails} migrations and rewrite %{timestamps} method with correct field\n  name in models."
+msgstr "И еще одна подсказка - поскольку название поля создания записи в %{ecto} будет конфликтовать с %{ca} в %{ar}, необходимо явно переназвать это поле в миграции %{rails} и переопределить метод %{timestamps} модели, указав корректное название поля"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:21
+msgid "But %{activer} behaives differently.\n  It's wierd, but %{ar} doesn't support composite primaty keys. The solution may be found in %{gem} gem.\n  With this additional step you can work it."
+msgstr "Однако %{activer} ведет себя по другому. Как ни странно, %{ar} не поддерживает составные первичные ключи. Решение может быть найдено в геме %{gem}"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:6
+msgid "Databases for Phoenix microservises are also available from Rails and we have some cases when we need to\n  save records in them from Rails as well."
+msgstr "ффф"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:38
+msgid "Here is an example:"
+msgstr "ффф"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:44
+msgid "Hope it helps!"
+msgstr "Надеюсь это помогло!"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:4
+msgid "Our application consists of multiple microservises written in %{elixir}/%{phoenix} with admin interface in %{ruby}/%{rails}."
+msgstr "ффф"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:48
+msgid "To go places and do things that have never been done before – that’s what living is all about."
+msgstr "To go places and do things that have never been done before – that’s what living is all about."
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:11
+msgid "Usually it runs smoothly but not this time. Table of %{gcv} belongs to %{gc} and has a\n  composite primary key [%{gci}, %{v}]."
+msgstr "ффф"
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:2
+msgid "Welcome to %{name}"
+msgstr ""
+
+#:
+#: web/templates/page/composite_primaty_keys_in_rails_and_phoenix_apps.html.eex:15
+msgid "With %{ecto} it may be implimented this way:"
+msgstr "ффф"

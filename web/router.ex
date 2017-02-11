@@ -7,6 +7,7 @@ defmodule ShemereyPosts.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug ShemereyPosts.Locale
   end
 
   pipeline :api do
