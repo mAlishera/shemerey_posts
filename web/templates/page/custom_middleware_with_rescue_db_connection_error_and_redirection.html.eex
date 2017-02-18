@@ -1,0 +1,39 @@
+<h2 class="section-heading">Custom middleware with rescue database connection error and redirection to config form.</h2>
+
+<p>
+  In some cases we need an access to our app when it not configured yet, database.yml configs are incorrect or db is not connected. Some controllers in our Rails app should have an access without db connection. But with every request PostgresqlAdapter.connect is called raising PG::ConnectionBad error in out cases.
+  We couldn't just rescue this within some place in the app, because request doesn't reach any.
+</br>
+  The solution was found in custom middleware. Here is step by step implimentation below.
+</p>
+
+<p>
+  Adding custom middleware to rack stack is as simple as create a file in lib/ folder (Rails 5.0) and put it in correct position with #insert_before method.
+</p>
+<blockquote>
+  application.rb:
+</blockquote>
+
+<script src="https://gist.github.com/mAlishera/2e108fc5fd08e1e91f6788ef55359998.js"></script>
+
+<p>
+  Middleware file should have #initialize(app) and #call(env) methods and for thread-safety on Puma or Unicorn we #dup MyMiddleware object. Further I'll explane more in detales.
+</p>
+
+<blockquote>
+  my_middleware.rb
+</blockquote>
+
+<script src="https://gist.github.com/mAlishera/56dd6779c884970c5889f39f370d3e38.js"></script>
+
+<p>
+  As you may see in code snippet above within <code class="inline">_call</code> method we just call <code class="inline">@app.call(env)</code> which is the same as <code class="inline">super</code>, but I prefer <code class="inline">@app.call(env)</code> cause it makes the request more obvious on my opinion. In case of <code class="inline">PG::ConnectionBad</code> error we actualy redirect to <code class="inline">'/configs/new'</code>, but if you try to impliment redirection with something like <code class="inline">[301, {'Location' => '/admin/config', 'Content-Type' => 'text/html'}, ['Configs Needed']]</code> you risk to get into redirect loop. So <code class="inline">ConfigsController.action(:new).call(env)</code>is more safe.
+</p>
+
+<p>
+  Hope it helps!
+</p>
+
+<span class="caption text-muted">
+  Start where you are. Use what you can. Do what you can.
+</span>
