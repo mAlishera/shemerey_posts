@@ -1,49 +1,49 @@
 <h2 class="section-heading">Composite primary keys in Rails and Phoenix apps</h2>
 
 <p>
-  <%= gettext "Our application consists of multiple microservises written in %{elixir}/%{phoenix} with admin interface in %{ruby}/%{rails}.", elixir: "Elixir", phoenix: "Phoenix", ruby: "Ruby", rails: "Rails" %>
+  Our application consists of multiple microservises written in Elixir/Phoenix with admin interface in Ruby/Rails.
 </br>
-  <%= gettext "Databases for Phoenix microservises are also available from Rails and we have some cases when we need to
-  save records in them from Rails as well.", phoenix: "Phoenix", rails: "Rails" %>
+  Databases for Phoenix microservises are also available from Rails and we have some cases when we need to
+  save records in them from Rails as well.
 </p>
 
 <p>
-  <%= gettext "Usually it runs smoothly but not this time. Table of %{gcv} belongs to %{gc} and has a
-  composite primary key [%{gci}, %{v}].", gcv: ":grout_chat_versions", gc: ":group_chat", gci: ":group_chat_id", v: ":version" %>
+  Usually it runs smoothly but not this time. Table of <code class="inline">:grout_chat_versions</code> belongs to <code class="inline">:group_chat</code> and has a
+  composite primary key <code class="inline">[:group_chat_id, :version]</code>.
 </p>
 <blockquote>
-  <%= gettext "With %{ecto} it may be implimented this way:", ecto: "Ecto" %>
+  With Ecto it may be implimented this way:
 </blockquote>
 
 <script src="https://gist.github.com/mAlishera/42c755a2ec02efb80d936cf2e42cd3be.js"></script>
 
 <p>
-  <%= gettext "But %{activer} behaives differently.
-  It's wierd, but %{ar} doesn't support composite primaty keys. The solution may be found in %{gem} gem.
-  With this additional step you can work it.", activer: "ActiveRecord", ar: "AR", gem: "composite_primary_keys"  %>
+  But ActiveRecord behaives differently.
+  It's wierd, but AR doesn't support composite primaty keys. The solution may be found in <code class="inline">composite_primary_keys</code> gem.
+  With this additional step you can work it.
 </p>
 
 <blockquote>
-  <%= gettext "%{ar} implimentation below:", ar: "AR" %>
+  AR implimentation below:
 </blockquote>
 
 <script src="https://gist.github.com/mAlishera/89f98f30bc906595e9d3ce3a68bf040e.js"></script>
 
 <p>
-  <%= gettext "And one more tip - as soon as %{ecto}'s timestamps are in conflict with %{ar} %{ca} field, you'll need to define
-  %{ecto}'s %{ia} explicitly in %{rails} migrations and rewrite %{timestamps} method with correct field
-  name in models.", ecto: "Ecto", ar: "AR", ca: ":created_at", ia: ":inserted_at", rails: "Rails", timestamps: "timestamp_attributes_for_create"  %>
+  And one more tip - as soon as Ecto's timestamps are in conflict with AR <code class="inline">:created_at</code> field, you'll need to define
+  Ecto's <code class="inline">:inserted_at</code> explicitly in Rails migrations and rewrite <code class="inline">timestamp_attributes_for_create</code> method with correct field
+  name in models.
 </p>
 <blockquote>
-  <%= gettext "Here is an example:" %>
+  Here is an example:
 </blockquote>
 
 <script src="https://gist.github.com/mAlishera/a7f9c3fefe5249406ac498553da4b3fd.js"></script>
 
 <p>
-  <%= gettext "Hope it helps!" %>
+  Hope it helps!
 </p>
 
 <span class="caption text-muted">
-  <%= gettext "To go places and do things that have never been done before – that’s what living is all about." %>
+  "To go places and do things that have never been done before – that’s what living is all about."
 </span>

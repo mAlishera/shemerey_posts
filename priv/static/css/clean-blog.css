@@ -398,3 +398,7 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: #0085A1;
 }
+code {
+  background: hsla(205, 31%, 67%, 0.28) !important;
+  color: #2A3132;
+}

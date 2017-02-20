@@ -11,7 +11,6 @@ config :shemerey_posts,
 # Configures the endpoint
 config :shemerey_posts, ShemereyPosts.Endpoint,
   root: Path.dirname(__DIR__),
-  secret_key_base: "RB7VC/5LZ2/Vkw0BSb/xqcs9Vpwn9jOPoJXhU2I5eBtvNzs6WH5X0JILI4kMIj0Z",
   render_errors: [accepts: ~w(html json)],
   pubsub: [name: ShemereyPosts.PubSub,
            adapter: Phoenix.PubSub.PG2]

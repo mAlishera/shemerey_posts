@@ -1,0 +1,66 @@
+<h2 class="section-heading">Custom middleware to rescue database connection error and redirect to config form.</h2>
+
+<p>
+  In some cases we need an access to our app when it is not configured yet, <code class="inline">database.yml</code> configs are incorrect or db is not connected. Some controllers in our Rails app should have an access without db connection so.
+</br>
+  But with every request <code class="inline">PostgresqlAdapter.connect</code> is called raising <code class="inline">PG::ConnectionBad</code> error in our cases.
+  We couldn't just rescue from it within some place in the app, because request doesn't reach any.
+</br>
+  The solution was found in creating custom middleware. Here is step by step implimentation below.
+</p>
+
+<p>
+  Adding custom middleware to Rack stack is as simple as create a file in <code class="inline">lib/</code> folder (Rails 5.0) and put the created class name as a string to <code class="inline">application.rb</code>. It is important to find the correct position in the stack to catch the error and place the custom middlware there with <code class="inline">insert_before</code> method.
+</p>
+<blockquote>
+  application.rb:
+</blockquote>
+
+<script src="https://gist.github.com/mAlishera/2e108fc5fd08e1e91f6788ef55359998.js"></script>
+
+<p>
+  Middleware file should have <code class="inline">initialize(app)</code> and <code class="inline">call(env)</code> methods and for thread-safety on Puma or Unicorn we <code class="inline">dup</code> MyMiddleware object. Further I'll explain more in details.
+</p>
+
+<blockquote>
+  my_middleware.rb
+</blockquote>
+
+<script src="https://gist.github.com/mAlishera/56dd6779c884970c5889f39f370d3e38.js"></script>
+
+<p>
+  You can check it now from console with <code class="inline">rake middleware</code> command.
+</p>
+
+<p>
+  As you may see in code snippet above within <code class="inline">_call</code> method we just call <code class="inline">@app.call(env)</code> which returns <code class="inline">[@status, @headers, @response]</code>.
+</p>
+<p>
+  In case of <code class="inline">PG::ConnectionBad</code> error we actualy redirect to <code class="inline">'/config'</code>, but if you try to impliment redirection with something like code below you risk to get into redirect loop.
+</p>
+<blockquote>
+  Causes a redirect loop:
+</blockquote>
+<code>[301, {'Location' => '/config', 'Content-Type' => 'text/html'}, []]</code>
+<p>
+  So more safe is:
+</p>
+<code>ConfigsController.action(:new).call(env)</code>
+
+<p>
+  And the last thing we should remember when calling the action from this point - to skip <code class="inline">verify_authenticity_token</code> in your controller.
+</p>
+<blockquote>
+  configs_controller.rb
+</blockquote>
+
+<script src="https://gist.github.com/mAlishera/32f0e92d18d16b8bf191981416fdec4d.js"></script>
+
+
+<p>
+  Hope it helps!
+</p>
+
+<span class="caption text-muted">
+  "Start where you are. Use what you can. Do what you can."
+</span>

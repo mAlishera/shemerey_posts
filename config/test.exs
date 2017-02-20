@@ -4,6 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :shemerey_posts, ShemereyPosts.Endpoint,
   http: [port: 4001],
+  secret_key_base: "RB7VC/5LZ2/Vkw0BSb/xqcs9Vpwn9jOPoJXhU2I5eBtvNzs6WH5X0JILI4kMIj0Z",
   server: false
 
 # Print only warnings and errors during test
