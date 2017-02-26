@@ -11,7 +11,7 @@
 # 	                                           tags: ["elixir"]})
 ShemereyPosts.Repo.delete_all(ShemereyPosts.Post)
 ShemereyPosts.Repo.insert!(%ShemereyPosts.Post{title: "Composite primary keys in Rails and Phoenix apps.",
-	                                           subtitle: "Ecto and ActiveRecord behaive differently",
+	                                           subtitle: "Ecto and ActiveRecord behave differently.",
 	                                           path: "composite_primaty_keys_in_rails_and_phoenix_apps",
 	                                           tags: ["elixir", "ruby"], inserted_at: Calecto.DateTimeUTC.from_erl!({{2016, 11, 20}, {17, 21, 19, 827336}})})
 ShemereyPosts.Repo.insert!(%ShemereyPosts.Post{title: "Custom middleware to rescue database connection error and redirect to config form.",

@@ -1,7 +1,7 @@
 <h2 class="section-heading">Composite primary keys in Rails and Phoenix apps</h2>
 
 <p>
-  Our application consists of multiple microservises written in Elixir/Phoenix with admin interface in Ruby/Rails.
+  Our application consists of multiple microservices written in Elixir/Phoenix with admin interface in Ruby/Rails.
 </br>
   Databases for Phoenix microservises are also available from Rails and we have some cases when we need to
   save records in them from Rails as well.
@@ -12,19 +12,19 @@
   composite primary key <code class="inline">[:group_chat_id, :version]</code>.
 </p>
 <blockquote>
-  With Ecto it may be implimented this way:
+  With Ecto it may be implemented this way:
 </blockquote>
 
 <script src="https://gist.github.com/mAlishera/42c755a2ec02efb80d936cf2e42cd3be.js"></script>
 
 <p>
-  But ActiveRecord behaives differently.
-  It's wierd, but AR doesn't support composite primaty keys. The solution may be found in <code class="inline">composite_primary_keys</code> gem.
+  But ActiveRecord behaves differently.
+  It's weird, but AR doesn't support composite primaty keys. The solution may be found in <code class="inline">composite_primary_keys</code> gem.
   With this additional step you can work it.
 </p>
 
 <blockquote>
-  AR implimentation below:
+  AR implementation below:
 </blockquote>
 
 <script src="https://gist.github.com/mAlishera/89f98f30bc906595e9d3ce3a68bf040e.js"></script>
